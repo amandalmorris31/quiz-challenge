@@ -1,0 +1,35 @@
+body {
+    background-color: powderblue;
+  }
+  h1 {
+    color: blue;
+    margin:auto; 
+    width:50%; 
+    text-align:center; 
+    font-family:arial; 
+    padding:20px;
+  }
+
+  h3 {
+    margin:auto; 
+    width:50%; 
+    text-align:center; 
+    font-family:arial; 
+    padding:10px;
+  }
+
+  div, header, main, time, section, summary {
+
+    margin:auto; 
+    width:50%; 
+    text-align:center; 
+    font-family:arial;
+  }
+
+  button {
+    font-size:25px; 
+    text-align:center; 
+    font-family:arial;
+
+  }
+ 
