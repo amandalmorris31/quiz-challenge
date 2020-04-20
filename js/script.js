@@ -3,17 +3,8 @@
 
 var startBtn = document.querySelector("#start");
 var count = localStorage.getItem("count");
-
-
-startBtn.addEventListener("click", function startGame() {
-renderQuestion();
-});
-
-
-
-//need to create an objarray to store, question options, answer?
-
-var questionIndex=2;
+var score=0;
+var questionIndex=0;
 var trivia = 
 {
   questions:['What worm eater finds its food by directing its farts toward dirt?','What species of birds is susceptible to contagious yawning?', 'Jackass, Rock Hopper, and Emperor are all types of what?', 
@@ -29,44 +20,111 @@ var trivia =
 }
 
 
+startBtn.addEventListener("click", function startGame() {
+renderQuestion();
+});
+
+
+
+//need to create an objarray to store, question options, answer?
+
+
 
 
 //need a function to display the card
 //also need do do the following
 
 function renderQuestion(){
-  console.log("renderQuestion")
+
+  //https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
+  document.querySelector("#start").style.display= "none";
+  console.log("renderQuestion");
+  //need to check to see at the end or not
+  if(questionIndex< trivia.questions.length)
+  {
+  //if we are at the encodeURI//display end
 
   //trivia object
 console.log(trivia)
 //question
 console.log(trivia.questions[questionIndex])
+
 document.querySelector("#questions").textContent = (questionIndex+1)+ ". "+trivia.questions[questionIndex];
 //choices
 // console.log(trivia.choices[questionIndex][0])
-// console.log(trivia.choices[questionIndex][1])
-// console.log(trivia.choices[questionIndex][2])
-// console.log(trivia.choices[questionIndex][3])
+//clear out choices area to prevent overappending
+document.querySelector("#choices").textContent ="";
+
 for(var i=0;i<trivia.choices[questionIndex].length;i++){
   console.log(trivia.choices[questionIndex][i]);
-  var btnid="#"+questionIndex;
-  //#0
+  var choicebtn= document.createElement("button");
+  //choicebtn = <button></button>
+  choicebtn.setAttribute("class", "choice");
+  //choicebtn = <button class="choice"></button>
+  choicebtn.setAttribute("value",trivia.choices[questionIndex][i] );
+   //choicebtn = <button class="choice" value="hummingbird"></button>
+   choicebtn.textContent= trivia.choices[questionIndex][i];
+   //choicebtn = <button class="choice" value="hummingbird">hummingbird</button>
+   
+   //when user onclicks you run the checkQuestion function
+   choicebtn.onclick=checkQuestion;
+   
+   document.querySelector("#choices").appendChild(choicebtn);
+
+
   //need to add data to btn
-  document.querySelector("#0").setAttribute("text",trivia.choices[questionIndex][i]);
+
 }
 
 //answer
 console.log(trivia.answers[questionIndex])
 document.querySelector("#answer").textContent =  trivia.answers[questionIndex];
+  }
+  else{
+    gameOver();
+
+  }
 }
 
+
+function gameOver () {
+console.log("GAME OVER");
+//hide q
+//hide choices
+
+}
 //2. prompt with quest1
     //start time
     //list choices
     //when you click on any answers you will prompt to the next question
-        //click on a correct choice score goes up by 1 correct point
-        //what happens wrong
+    function checkQuestion(){
+      //  check to see if clicked correctly now add value
+      //userinput = this.value
+      console.log(this.value);
+      
+       //click on a correct choice score goes up by 1 correct point
+        
+
+        if(this.value == trivia.answers[questionIndex])
+        {
+          score++; //score=score+1
+          //display score update
+          document.querySelector("#score").textContent ="Score: "+ score;
+        }
+        else{
+          //what happens wrong
         //reduce time by 10sec
+        console.log("wrong ans!!");
+        }
+
+        //update the questionIndex
+        questionIndex++;
+
+        //render out the next card
+        renderQuestion();
+      
+      }
+       
 
 //function to check when you are done, or you can add this check before rendering card
 //3. how do i know when i am done?
