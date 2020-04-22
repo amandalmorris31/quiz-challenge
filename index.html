@@ -6,29 +6,37 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Bird Quiz</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link
+  href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Josefin+Sans&display=swap"
+  rel="stylesheet"
+/>
 </head>
+ 
 <body>
 
-  <header id="top">
-    <h1 id="title">title</h1>
-    <div id="instructions">instructions</div>
-    <button id="start" onclick="startBtn()">Start Quiz</button>
-  </header>
+<header id="top">
+    <h1 id="title">title
+
+    </h1>
+
+ 
+    <h3 id="instructions">instructions
+
+    </h3>
+    <div id="buttonContainer">
+      <button id="start">Start Quiz</button>
+
+    </div>
+  </header>  
+    
+ 
+  
  
   <main id="cards">
-    <time id="timer">Time</time>
+    <section id="timer">Time</section>
+    <section id="score">Score: 0</section>
     <section id="questions">Question</section>
     <section id="choices">
-      <button id="0">
-      </button>
-      <button id="1">
-      </button>
-      <button id="2">
-      </button>
-      <button id="3">
-      </button>
-      
-
       </section>
     <section id="answer">answer</section>
   </main>
@@ -41,6 +49,8 @@
     <button onclick="startBtn()">Play Again</button>
   
   </summary> 
+
+
   <script src="./js/script.js"></script>
 </body>
 </html>
